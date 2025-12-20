@@ -1,0 +1,19 @@
+additionalProperties:
+  key: bentopdf
+  name: BentoPDF
+  tags:
+    - Tool
+  shortDescZh: 一个以隐私为先的 PDF 工具包
+  shortDescEn: A Privacy First PDF Toolkit
+  type: website
+  crossVersionUpdate: false
+  limit: 0
+  website: https://bentopdf.com/
+  github: https://github.com/alam00000/bentopdf
+  document: https://github.com/alam00000/bentopdf
+  description:
+    en: A Privacy First PDF Toolkit
+    zh: 一个以隐私为先的 PDF 工具包
+  architectures:
+    - amd64
+    - arm64

@@ -1,0 +1,17 @@
+services:
+  bentopdf:
+    container_name: ${CONTAINER_NAME}
+    image: bentopdf/${IMAGE_NAME}:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8080
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true
