@@ -29,6 +29,8 @@ MySQL 等数据库看情况。
 
 执行 GitHub Actions 中的 renovate.yml，如果有更新会自动 PR 并且触发 renovate-app-version.yml。
 
+[renovatebot 配置文档](https://docs.renovatebot.com/configuration-options/#matchpackagenames)
+
 ## 固定格式
 
 ```yml
