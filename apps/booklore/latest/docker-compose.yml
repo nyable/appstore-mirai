@@ -1,0 +1,25 @@
+services:
+  booklore:
+    image: booklore/booklore:latest
+    container_name: ${CONTAINER_NAME}
+    environment:
+      - DATABASE_URL=jdbc:${PANEL_DB_TYPE}://${PANEL_DB_HOST}:${PANEL_DB_PORT}/${PANEL_DB_NAME}?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&allowMultiQueries=true&useSSL=false&&serverTimezone=GMT%2B8
+      - DATABASE_USERNAME=${PANEL_DB_USER}
+      - DATABASE_PASSWORD=${PANEL_DB_USER_PASSWORD}
+      - BOOKLORE_PORT=${PANEL_APP_PORT_HTTP}
+    env_file:
+      - 1panel.env
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:${PANEL_APP_PORT_HTTP}"
+    volumes:
+      - ./data:/app/data
+      - ./books:/books
+      - ./bookdrop:/bookdrop
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true
