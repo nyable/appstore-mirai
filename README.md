@@ -15,9 +15,15 @@ sudo cp -r "$TMP_DIR/apps/." "$TARGET_DIR/"
 sudo rm -rf "$TMP_DIR"
 ```
 
+## 应用规划
 
-## 自动获取新版本
+应用本身相关的镜像尽量用 latest，只维护这个版本的配置。如果有跨版本不兼容又需要部署的情况，单独建个最新旧版本的固定版本号目录维护即可。
+应用依赖的数据库等通用服务固定一个常用的版本，就不用重复下载不同版本的镜像了。
+依赖的 Redis 不沿用现有的服务，单独在各自的 docker compose 中直接使用。
+MySQL 等数据库看情况。
+
+## 自动获取固定版本镜像的新版本
 
 [renovate.json](renovate.json)中配置`matchPackagePatterns`，加入需要匹配的镜像名称。
 
-执行GitHub Actions中的renovate.yml，如果有更新会自动PR并且触发renovate-app-version.yml。
+执行 GitHub Actions 中的 renovate.yml，如果有更新会自动 PR 并且触发 renovate-app-version.yml。
