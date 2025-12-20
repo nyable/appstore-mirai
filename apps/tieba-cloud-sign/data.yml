@@ -1,0 +1,19 @@
+additionalProperties:
+  key: tieba-cloud-sign
+  name: Tieba-Cloud-Sign
+  tags:
+    - Tool
+  shortDescZh: 贴吧云签到
+  shortDescEn: Tieba Cloud Sign
+  type: website
+  crossVersionUpdate: false
+  limit: 0
+  website: https://github.com/MoeNetwork/Tieba-Cloud-Sign
+  github: https://github.com/MoeNetwork/Tieba-Cloud-Sign
+  document: https://github.com/MoeNetwork/Tieba-Cloud-Sign/wiki
+  description:
+    en: Tieba Cloud Sign
+    zh: 贴吧云签到
+  architectures:
+    - amd64
+    - arm64

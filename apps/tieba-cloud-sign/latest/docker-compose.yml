@@ -1,0 +1,22 @@
+services:
+  web:
+    container_name: ${CONTAINER_NAME}
+    image: moenetwork/tieba-cloud-sign:latest
+    environment:
+      - PUID=1000 # 可修改为你想以什么用户运行caddy，该用户的UID
+      - PGID=1000 # 可修改为你想以什么用户运行caddy，该用户的UID
+      - CSRF=true
+      - DB_HOST=${PANEL_DB_HOST}:${PANEL_DB_PORT}
+      - DB_USER=${PANEL_DB_USER}
+      - DB_PASSWD=${PANEL_DB_USER_PASSWORD} # 数据库密码
+      - DB_NAME=${PANEL_DB_NAME} # 数据库名
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8080
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true
