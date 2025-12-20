@@ -7,7 +7,7 @@
 ## 添加本地应用
 
 ```shell
-TMP_DIR="/tmp/appstore_tmp"
+TMP_DIR="/tmp/appstore_mirai_tmp"
 TARGET_DIR="/opt/1panel/resource/apps/local"
 sudo rm -rf "$TMP_DIR"
 sudo git clone --depth 1 https://github.com/nyable/appstore-mirai.git "$TMP_DIR"
