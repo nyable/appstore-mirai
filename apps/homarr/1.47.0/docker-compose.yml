@@ -2,7 +2,6 @@ services:
   homarr:
     container_name: ${CONTAINER_NAME}
     image: ghcr.io/homarr-labs/homarr:v1.47.0
-    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - ./homarr/appdata:/appdata
@@ -12,6 +11,7 @@ services:
       - ENABLE_DNS_CACHING=${ENABLE_DNS_CACHING}
     ports:
       - ${PANEL_APP_PORT_HTTP}:7575
+    restart: unless-stopped
     networks:
       - 1panel-network
     labels:

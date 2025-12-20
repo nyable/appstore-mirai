@@ -9,6 +9,7 @@
 ```shell
 TMP_DIR="/tmp/appstore_tmp"
 TARGET_DIR="/opt/1panel/resource/apps/local"
+sudo rm -rf "$TMP_DIR"
 sudo git clone --depth 1 https://github.com/nyable/appstore-mirai.git "$TMP_DIR"
 sudo cp -r "$TMP_DIR/apps/." "$TARGET_DIR/"
 # 清理临时文件
@@ -27,3 +28,26 @@ MySQL 等数据库看情况。
 [renovate.json](renovate.json)中配置`matchPackagePatterns`，加入需要匹配的镜像名称。
 
 执行 GitHub Actions 中的 renovate.yml，如果有更新会自动 PR 并且触发 renovate-app-version.yml。
+
+## 固定格式
+
+```yml
+services:
+  homarr:
+    container_name: ${CONTAINER_NAME}
+    image: IMAGE_NAME
+    # volumes:
+    #   - ./data:/data
+    # environment:
+    #   - KEY=${VALUE}
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8080
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true
+```
