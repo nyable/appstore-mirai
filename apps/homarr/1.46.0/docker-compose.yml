@@ -1,0 +1,21 @@
+services:
+  homarr:
+    container_name: ${CONTAINER_NAME}
+    image: ghcr.io/homarr-labs/homarr:v1.46.0 # renovate
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - ./homarr/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
+      - NO_EXTERNAL_CONNECTION=${NO_EXTERNAL_CONNECTION}
+      - ENABLE_DNS_CACHING=${ENABLE_DNS_CACHING}
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:7575
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true

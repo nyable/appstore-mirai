@@ -1,0 +1,19 @@
+additionalProperties:
+  key: rsshub
+  name: RSSHub
+  tags:
+    - Tool
+  shortDescZh: 万物皆可RSS
+  shortDescEn: Everything is RSSible.
+  type: website
+  crossVersionUpdate: false
+  limit: 0
+  website: https://docs.rsshub.app/
+  github: https://github.com/DIYgod/RSSHub
+  document: https://docs.rsshub.app/zh/guide/
+  description:
+    en: Everything is RSSible.
+    zh: 万物皆可RSS
+  architectures:
+    - amd64
+    - arm64

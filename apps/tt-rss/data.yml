@@ -1,0 +1,19 @@
+additionalProperties:
+  key: tt-rss
+  name: Tiny Tiny RSS
+  tags:
+    - Tool
+  shortDescZh: 免费、灵活、开源的基于网络的订阅阅读器和聚合器
+  shortDescEn: A free, flexible, open-source, web-based news feed reader and aggregator.
+  type: website
+  crossVersionUpdate: false
+  limit: 0
+  website: https://tt-rss.org/
+  github: https://github.com/tt-rss/tt-rss
+  document: https://tt-rss.org/docs/Installation-Guide.html
+  description:
+    en: A free, flexible, open-source, web-based news feed reader and aggregator.
+    zh: 免费、灵活、开源的基于网络的订阅阅读器和聚合器
+  architectures:
+    - amd64
+    - arm64

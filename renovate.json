@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "dependencyDashboard": false,
+  "gitIgnoredAuthors": [
+    "githubaction@githubaction.com"
+  ],
+  "rebaseWhen": "never",
+  "ignorePaths": [],
+  "packageRules": [
+    {
+      "packageNames": [
+        "docker-compose"
+      ],
+      "automerge": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": [
+        "homarr"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "enabled": true,
+      "automerge": true
+    }
+  ],
+  "prCreation": "immediate"
+}

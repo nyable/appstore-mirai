@@ -1,0 +1,20 @@
+additionalProperties:
+  key: karakeep
+  name: Karakeep
+  tags:
+    - Tool
+  shortDescZh: 一个可自托管的书签应用
+  shortDescEn: A self-hostable bookmark-everything app
+  type: website
+  crossVersionUpdate: false
+  limit: 0
+  website: https://karakeep.app/
+  github: https://github.com/karakeep-app/karakeep
+  document: https://docs.karakeep.app
+  description:
+    en: A self-hostable bookmark-everything app
+    zh: 一个可自托管的书签应用
+    zh-Hant: 一個可自託管的書籤應用
+  architectures:
+    - amd64
+    - arm64

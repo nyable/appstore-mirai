@@ -1,0 +1,48 @@
+x-common-config: &common-base
+  restart: unless-stopped
+  env_file:
+    - 1panel.env
+  environment:
+    - TTRSS_DB_HOST=${PANEL_DB_HOST}
+    - TTRSS_DB_USER=${PANEL_DB_USER}
+    - TTRSS_DB_NAME=${PANEL_DB_NAME}
+    - TTRSS_DB_PASS=${PANEL_DB_USER_PASSWORD}
+  networks:
+    - 1panel-network
+  labels:
+    createdBy: Apps
+
+services:
+  app:
+    <<: *common-base
+    container_name: ${CONTAINER_NAME}
+    image: ghcr.io/tt-rss/tt-rss:latest
+    volumes:
+      - ./app:/var/www/html
+      - ./config.d:/opt/tt-rss/config.d:ro
+
+  updater:
+    <<: *common-base
+    container_name: ${CONTAINER_NAME}-updater
+    image: ghcr.io/tt-rss/tt-rss:latest
+    depends_on:
+      - app
+    command: /opt/tt-rss/updater.sh
+    volumes:
+      - ./app:/var/www/html
+      - ./config.d:/opt/tt-rss/config.d:ro
+
+  web-nginx:
+    <<: *common-base
+    container_name: ${CONTAINER_NAME}-nginx
+    image: ghcr.io/tt-rss/tt-rss-web-nginx:latest
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:80
+    depends_on:
+      - app
+    volumes:
+      - ./app:/var/www/html:ro
+
+networks:
+  1panel-network:
+    external: true

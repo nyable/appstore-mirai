@@ -1,0 +1,58 @@
+services:
+  rsshub:
+    container_name: ${CONTAINER_NAME}
+    image: diygod/rsshub:latest
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:1200
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:1200/healthz" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - redis
+      - browserless
+    restart: unless-stopped
+    env_file:
+      - 1panel.env
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: Apps
+
+  browserless:
+    container_name: ${CONTAINER_NAME}-browserless
+    image: browserless/chrome:latest
+    ulimits:
+      core:
+        hard: 0
+        soft: 0
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/pressure" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: Apps
+  redis:
+    container_name: ${CONTAINER_NAME}-redis
+    image: redis:8.4.0
+    volumes:
+      - ./redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - 1panel-network
+    labels:
+      createdBy: Apps
+networks:
+  1panel-network:
+    external: true

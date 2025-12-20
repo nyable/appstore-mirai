@@ -1,0 +1,61 @@
+additionalProperties:
+  formFields:
+    - default: 7575
+      edit: true
+      envKey: PANEL_APP_PORT_HTTP
+      labelEn: Port
+      labelZh: 端口
+      required: true
+      rule: paramPort
+      type: number
+      label:
+        en: Port
+        zh: 端口
+        zh-Hant: 埠
+    - default: 6cd176f1c1291127526335c928f5dba2ed9d6794e37429efefe9ea565a6f24cf
+      envKey: SECRET_ENCRYPTION_KEY
+      labelEn: Encryption Key
+      labelZh: 加密密钥
+      label:
+        en: Encryption Key
+        ja: 暗号化キー
+        ms: Kunci Enkripsi
+        pt-br: Chave de Criptografia
+        ru: Ключ шифрования
+        ko: 암호화 키
+        zh-hant: 加密金鑰
+        zh: 加密密钥
+      required: true
+      type: password
+    - default: "false"
+      envKey: NO_EXTERNAL_CONNECTION
+      edit: true
+      labelEn: No External Connection
+      labelZh: 禁止外部连接
+      label:
+        en: No External Connection
+        zh: 禁止外部连接
+        zh-hant: 禁止外部連接
+      required: true
+      type: select
+      values:
+        - label: 是
+          value: "true"
+        - label: "否"
+          value: "false"
+    - default: "false"
+      envKey: ENABLE_DNS_CACHING
+      edit: true
+      labelEn: Enable DNS Caching
+      labelZh: 启用DNS缓存
+      label:
+        en: Enable DNS Caching
+        zh: 启用DNS缓存
+        zh-hant: 啟用 DNS 快取
+      required: true
+      type: select
+      values:
+        - label: 是
+          value: "true"
+        - label: 否
+          value: "false"

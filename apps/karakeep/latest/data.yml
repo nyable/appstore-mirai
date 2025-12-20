@@ -1,0 +1,20 @@
+additionalProperties:
+  formFields:
+    - default: 3000
+      edit: true
+      envKey: PANEL_APP_PORT_HTTP
+      labelEn: Port
+      labelZh: 端口
+      required: true
+      rule: paramPort
+      type: number
+      label:
+        en: Port
+        zh: 端口
+        zh-Hant: 埠
+    - default: release
+      envKey: KARAKEEP_VERSION
+      labelEn: Karakeep Image Tag
+      labelZh: Karakeep 镜像标签
+      required: true
+      type: text
