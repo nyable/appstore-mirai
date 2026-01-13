@@ -11,12 +11,14 @@
   "ignorePaths": [],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "docker-compose"
+      "description": "默认禁用所有 Docker 镜像更新",
+      "matchDatasources": [
+        "docker"
       ],
-      "automerge": true
+      "enabled": false
     },
     {
+      "description": "白名单：只更新以下软件",
       "matchPackageNames": [
         "homarr"
       ],
