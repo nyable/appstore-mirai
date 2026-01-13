@@ -17,12 +17,6 @@
       "automerge": true
     },
     {
-      "matchDatasources": [
-        "docker"
-      ],
-      "enabled": false
-    },
-    {
       "matchPackagePatterns": [
         "homarr"
       ],
